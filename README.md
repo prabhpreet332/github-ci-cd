@@ -30,4 +30,4 @@ Steps to add:
         2. on feature-branch "feature/**" for push x.y.z+1
         2. on master for merge x.y+1.z
         2. on master for merge "release/**" x+1.0.0
-5. security fix (later on)
+5. security scan (later on)
