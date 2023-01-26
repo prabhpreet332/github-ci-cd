@@ -12,3 +12,6 @@ More around the actions (custom build)
 
 Basic understanding:
 1. https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions
+
+First Job for reference:
+1. https://github.com/prabhpreet332/github-ci-cd/actions/runs/4015527605/jobs/6897359112
