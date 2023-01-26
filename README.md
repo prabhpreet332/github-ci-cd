@@ -22,6 +22,7 @@ Steps to add:
     2. isort
     3. flake8
 2. unittest run
+2. unittest coverage report
 3. sonar lint (later on)
 4. build
     1. dockerfile-build
