@@ -15,6 +15,8 @@ Basic understanding:
 
 First Job for reference:
 1. https://github.com/prabhpreet332/github-ci-cd/actions/runs/4015527605/jobs/6897359112
+2. Jobs run during the setup: 
+    - https://github.com/prabhpreet332/github-ci-cd/actions/workflows/github-actions.yml?query=branch%3Afeature%2Fadds-test-actions-file+actor%3Aprabhpreet332
 
 Steps to add:
 1. Linting
