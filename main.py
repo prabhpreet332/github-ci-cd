@@ -1,6 +1,7 @@
-print("hello world")
 import datetime
 import uuid
+
+print("hello world")
 
 
 def generate_uuid():
