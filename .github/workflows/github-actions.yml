@@ -32,10 +32,13 @@ jobs:
   main-action:
     runs-on: ubuntu-latest
     steps:
-      - run: pip freeze
-      - run: tree ./
-      - run: ls -alth ${GITHUB_WORKSPACE}/
-      - run: bash ${GITHUB_WORKSPACE}/scripts/ci-run.sh
+      - run: |
+          pip freeze
+          tree .
+          ls -alth ${GITHUB_WORKSPACE}/
+          ls -althR .
       - run: pip install -r requirements.txt
+      - run: bash ./scripts/ci-run.sh
+        shell: bash
     # needs:
     #   - demo-action
