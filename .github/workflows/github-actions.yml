@@ -33,8 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: pip freeze
-      - run: chmod +x run.sh
-      - run: bash run.sh
+      - run: bash ${GITHUB_WORKSPACE}/scripts/ci-run.sh
       - run: pip install -r requirements.txt
     needs:
       - demo-action
