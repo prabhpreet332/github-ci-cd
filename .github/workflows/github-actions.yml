@@ -2,7 +2,7 @@ name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  demo-action:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -29,10 +29,12 @@ jobs:
       - run: pip freeze
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
-  Run-python-file:
+  main-action:
     runs-on: ubuntu-latest
     steps:
       - run: pip freeze
       - run: chmod +x run.sh
       - run: bash run.sh
       - run: pip install -r requirements.txt
+    needs:
+      - demo-action
