@@ -37,5 +37,5 @@ jobs:
       - run: ls -alth ${GITHUB_WORKSPACE}/
       - run: bash ${GITHUB_WORKSPACE}/scripts/ci-run.sh
       - run: pip install -r requirements.txt
-    needs:
-      - demo-action
+    # needs:
+    #   - demo-action
