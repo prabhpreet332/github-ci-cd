@@ -15,6 +15,13 @@ jobs:
       - name: echo values
         run: |
           echo ${{github.ref_name}}
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Test
+        run: |
+          echo $RELEASE_VERSION
+          echo ${{ env.RELEASE_VERSION }}
+
 
 #   unittests:
 #     name: Unit Tests
