@@ -1,0 +1,53 @@
+name: Alternate GH actions
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: 
+  pull_request:
+    # types:
+    #   - open
+    branches:
+      - "docs/*"
+jobs:
+  linting:
+    name: Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Install the dependencies
+        run: pip install -r requirements.txt
+      - run: bash ${{ github.workspace }}/scripts/ci-run-linting.sh
+        shell: bash
+      - name: echo values
+        run: |
+          echo ${{github.ref_name}}
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Test
+        run: |
+          echo $RELEASE_VERSION
+          echo ${{ env.RELEASE_VERSION }}
+
+
+#   unittests:
+#     name: Unit Tests
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Check out repository code
+#         uses: actions/checkout@v3
+#       - name: Install the dependencies
+#         run: pip install -r requirements.txt
+#       - run: echo "unit tests successful"
+#     needs:
+#       - linting
+
+#   build:
+#     name: Build
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Check out repository code
+#         uses: actions/checkout@v3
+#       - name: Install the dependencies
+#         run: pip install -r requirements.txt
+#       - run: echo "Build successful"
+#     needs:
+#       - unittests
