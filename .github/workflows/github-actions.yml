@@ -21,6 +21,10 @@ jobs:
           echo ${{github.ref}}
           echo ${{github.repository}}
           echo ${{github.repository_id}}
+          # feature/tag-creation
+          # refs/heads/feature/tag-creation
+          # prabhpreet332/github-ci-cd
+          # 593613456
       - name: Set env
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - name: Test
@@ -41,25 +45,25 @@ jobs:
 #     needs:
 #       - linting
 
-  # build:
-  #   name: Build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Check out repository code
-  #       uses: actions/checkout@v3
-  #     - name: Install the dependencies
-  #       run: pip install -r requirements.txt
-  #     - name: Docker Login
-  #       env: 
-  #         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-  #         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-  #       run: |
-  #         docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && echo "Docker Login success"
-  #     - name: Docker Build and Push 
-  #       env: 
-  #         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-  #         IMAGE_NAME: {{ github.github_repository }}
-  #         IMAGE_TAG: ${{ github.ref }}
-  #       run: |
-  #         bash ${{ github.workspace }}/scripts/build-image.sh $DOCKER_USERNAME $IMAGE_NAME $IMAGE_TAG
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Install the dependencies
+        run: pip install -r requirements.txt
+      - name: Docker Login
+        env: 
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - name: Docker Build and Push 
+        env: 
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          IMAGE_NAME: ${{ github.repository }}
+          IMAGE_TAG: ${{ github.ref }}
+        run: |
+          bash ${{ github.workspace }}/scripts/build-image.sh $DOCKER_USERNAME $IMAGE_NAME $IMAGE_TAG
 
