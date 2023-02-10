@@ -1,4 +1,4 @@
-name: GitHub Actions for Python (Django) code base
+name: Alternate GH actions
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
