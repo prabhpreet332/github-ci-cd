@@ -1,5 +1,5 @@
-FROM python:3.7-slim-buster
+FROM python:3.8-slim-buster
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+# RUN pip install -r requirements.txt
 COPY . .
 CMD [ "python", "main.py" ]
