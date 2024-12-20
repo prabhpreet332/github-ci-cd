@@ -12,5 +12,5 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-      - run: ls -alth && sh ./check-version-file.sh
+      - run: ls -alth && sh ./check-version-file.sh ${{ github.base_ref }} ${{ github.head_ref }} 
 
