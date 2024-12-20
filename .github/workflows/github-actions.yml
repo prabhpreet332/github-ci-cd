@@ -10,5 +10,5 @@ jobs:
     name: TestJob
     runs-on: ubuntu-latest
     steps:
-      - run: .github/workflows/check-version-file.sh ${{ github.base_ref }} ${{ github.head_ref }}
+      - run: ./check-version-file.sh ${{ github.base_ref }} ${{ github.head_ref }}
 
