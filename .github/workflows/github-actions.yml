@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: >
-       if ! grep -w "version.txt"; then
-          echo "version file not updated" >&2
-       fi 
+           if ! grep -w "version.txt"; then
+              echo "version file not updated" >&2
+           fi 
 
