@@ -24,7 +24,7 @@ jobs:
         id: check_version_file
         run: |
           # Check if `version.txt` is in the diff
-          if git diff origin/${{ github.event.pull_request.base.ref }} origin/${{ github.event.pull_request.head.ref }} --name-only | grep "version.txt"; then
+          if git diff --name-only origin/${{ github.event.pull_request.base.ref }} -- origin/${{ github.event.pull_request.head.ref }} | grep "version.txt"; then
             echo "file_found=true" >> $GITHUB_ENV
             exit 0
           else
