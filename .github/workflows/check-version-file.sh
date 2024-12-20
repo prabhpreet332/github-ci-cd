@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "$1"
+echo "$2"
+
 # Validate arguments
 if [ "$#" -ne 2 ]; then
     echo "Usage: $0 <base_branch> <head_branch>" >&2

@@ -9,36 +9,36 @@ jobs:
   test-job:
     name: TestJob
     runs-on: ubuntu-latest
-    # steps:
-    #   - name: Check out repository code
-    #     uses: actions/checkout@v3
-    #   - run: ls -alth && sh ./check-version-file.sh ${{ github.base_ref }} ${{ github.head_ref }} 
-
     steps:
-      - name: Checkout Code
+      - name: Check out repository code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 2 # Ensure both base and head branches are fetched
+      - run: ls -alth && sh ./check-version-file.sh ${{ github.base_ref }} ${{ github.head_ref }} 
 
-      - name: Compare Branches for version.txt
-        id: check_version_file
-        run: |
-          # Check if `version.txt` is in the diff
-          if git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} | grep "version.txt"; then
-            echo "file_found=true" >> $GITHUB_ENV
-            exit 0
-          else
-            echo "file_found=false" >> $GITHUB_ENV
-            exit 1
-          fi
-        continue-on-error: true # Allow the job to proceed even if the script exits with an error
+    # steps:
+    #   - name: Checkout Code
+    #     uses: actions/checkout@v3
+    #     with:
+    #       fetch-depth: 2 # Ensure both base and head branches are fetched
 
-      - name: Set Exit Code
-        run: |
-          if [ "$file_found" = "true" ]; then
-            echo "version.txt is present in the changes."
-            exit 0
-          else
-            echo "version.txt is not present in the changes."
-            exit 1
-          fi
+    #   - name: Compare Branches for version.txt
+    #     id: check_version_file
+    #     run: |
+    #       # Check if `version.txt` is in the diff
+    #       if git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} | grep "version.txt"; then
+    #         echo "file_found=true" >> $GITHUB_ENV
+    #         exit 0
+    #       else
+    #         echo "file_found=false" >> $GITHUB_ENV
+    #         exit 1
+    #       fi
+    #     continue-on-error: true # Allow the job to proceed even if the script exits with an error
+
+    #   - name: Set Exit Code
+    #     run: |
+    #       if [ "$file_found" = "true" ]; then
+    #         echo "version.txt is present in the changes."
+    #         exit 0
+    #       else
+    #         echo "version.txt is not present in the changes."
+    #         exit 1
+    #       fi
