@@ -1,8 +1,10 @@
 name: GitHub Actions for Python (Django) code base
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
-  pull_request:
-    - branches:  "*"
+  push:
+    branches:
+      - 'check-version'
+
 jobs:
   linting:
     name: Linting
