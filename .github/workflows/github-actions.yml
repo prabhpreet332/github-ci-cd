@@ -10,5 +10,7 @@ jobs:
     name: TestJob
     runs-on: ubuntu-latest
     steps:
-      - run: ls -alth
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: ls -alth && ./check-version-file.sh
 
