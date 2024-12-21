@@ -19,8 +19,8 @@ jobs:
 
       - run: ls -alth && sh ./.github/workflows/check-version-file.sh ${{ github.base_ref }} ${{ github.head_ref }} 
         with: 
-          BASE_BRANCH: ${{ github.base_ref }}
-          HEAD_BRANCH: ${{ github.head_ref }}
+          envkey_BASE_BRANCH: ${{ github.base_ref }}
+          envkey_HEAD_BRANCH: ${{ github.head_ref }}
         
     # steps:
     #   - name: Checkout Code
