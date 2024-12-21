@@ -17,10 +17,7 @@ jobs:
           BASE_BRANCH: ${{ github.base_ref }}
           HEAD_BRANCH: ${{ github.head_ref }}
 
-      - run: ls -alth && sh ./.github/workflows/check-version-file.sh ${{ github.base_ref }} ${{ github.head_ref }} 
-        with: 
-          envkey_BASE_BRANCH: ${{ github.base_ref }}
-          envkey_HEAD_BRANCH: ${{ github.head_ref }}
+      - run: ls -alth && sh ./.github/workflows/check-version-file.sh ${{ github.ref }} ${{ github.event.merge_group.base_ref }} 
         
     # steps:
     #   - name: Checkout Code
