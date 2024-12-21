@@ -13,7 +13,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
-      - run: ls -alth && sh ./.github/workflows/check-version-file.sh ${{ github.ref }} ${{ github.event.merge_group.base_ref }} 
+      - run: ls -alth && sh ./.github/workflows/check-version-file.sh ${{ github.ref }} ${{ github.base.ref }} 
         
     # steps:
     #   - name: Checkout Code
