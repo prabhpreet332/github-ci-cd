@@ -2,6 +2,8 @@
 
 echo "$1"
 echo "$2"
+echo "$GITHUB_HEAD_REF"
+echo "$GITHUB_BASE_REF"
 
 # Validate arguments
 if [ "$#" -ne 2 ]; then
